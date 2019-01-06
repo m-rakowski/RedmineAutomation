@@ -81,3 +81,6 @@ buildNumber.properties
 
 # Selenide screenshots to be excluded from codebase
 build/
+
+# Allure Reports plugin
+.allure/

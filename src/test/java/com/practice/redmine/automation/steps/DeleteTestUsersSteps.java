@@ -3,8 +3,6 @@ package com.practice.redmine.automation.steps;
 import com.practice.redmine.automation.pages.LoginPage;
 import com.practice.redmine.automation.pages.MainPage;
 import com.practice.redmine.automation.utils.UserDataGenerator;
-import cucumber.api.PendingException;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -15,8 +13,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assume.assumeFalse;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DeleteTestUsersSteps {
 

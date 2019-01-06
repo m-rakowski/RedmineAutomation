@@ -1,21 +1,16 @@
 package com.practice.redmine.automation.steps;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.practice.redmine.automation.entities.User;
 import com.practice.redmine.automation.pages.AccountPage;
 import com.practice.redmine.automation.pages.RegistrationPage;
 import com.practice.redmine.automation.utils.UserDataGenerator;
-import cucumber.api.PendingException;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class RegistrationSteps {
 
