@@ -4,10 +4,10 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class ProjectSettingsPage extends Page {
+public class ProjectSettingsPage extends Page<ProjectSettingsPage> {
 
     public ProjectSettingsPage() {
-        url = " ";
+        super(ProjectSettingsPage.class);
     }
 
 

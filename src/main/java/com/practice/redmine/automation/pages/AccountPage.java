@@ -5,9 +5,10 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class AccountPage extends Page {
+public class AccountPage extends Page<AccountPage> {
 
     public AccountPage() {
+        super(AccountPage.class);
         url = "http://demo.redmine.org/my/account";
     }
 

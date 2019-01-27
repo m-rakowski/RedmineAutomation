@@ -4,9 +4,10 @@ import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
-public class NewProjectPage extends Page {
+public class NewProjectPage extends Page<NewProjectPage> {
 
     public NewProjectPage() {
+        super(NewProjectPage.class);
         url = "http://demo.redmine.org/projects/new";
     }
 

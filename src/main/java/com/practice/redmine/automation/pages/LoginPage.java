@@ -6,9 +6,10 @@ import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
-public class LoginPage extends Page {
+public class LoginPage extends Page<LoginPage> {
 
     public LoginPage() {
+        super(LoginPage.class);
         url = "http://demo.redmine.org/login";
     }
 
