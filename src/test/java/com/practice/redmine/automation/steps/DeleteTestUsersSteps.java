@@ -56,9 +56,9 @@ public class DeleteTestUsersSteps {
         UserDataGenerator.resetCounter();
     }
 
-    @Then("^user counter file contains the number (\\d+)$")
-    public void counterIs(String count) throws IOException {
-        assertEquals(count, UserDataGenerator.readLastCountFromFile());
+    @Then("^file contents are \"([^\"]*)\"$")
+    public void fileContentsAre(String contents) throws Throwable {
+        assertEquals(contents, UserDataGenerator.readLastCountFromFile());
     }
 
 }

@@ -18,6 +18,6 @@ Feature: Delete test users
       | TestUser3   | TestUser3Password  |
       | TestUser4   | TestUser4Password  |
 
-    Scenario: Reset user generator counter
-      When user counter generator is reset
-      Then user counter file contains the number 0
+  Scenario: Reset user generator counter
+    When user counter generator is reset
+    Then file contents are "0"
