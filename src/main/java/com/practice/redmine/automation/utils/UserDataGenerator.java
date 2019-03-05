@@ -21,7 +21,7 @@ public class UserDataGenerator {
 
         UserDataGenerator.incrementCounter();
 
-        String username = "TestUser" + UserDataGenerator.readLastCountFromFile();
+        String username = "TestUser" + RandomStringGenerator.randomAlphaNumeric(10);
 
         return new User(
                 username,

@@ -1,5 +1,6 @@
 package com.practice.redmine.automation.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byName;
@@ -18,6 +19,7 @@ public class LoginPage extends Page<LoginPage> {
         $("#password").setValue(password);
         $(byName("login")).click();
 
+        new MainPage().loggedAs().shouldHave(Condition.text(username));
         return page(MainPage.class);
     }
 

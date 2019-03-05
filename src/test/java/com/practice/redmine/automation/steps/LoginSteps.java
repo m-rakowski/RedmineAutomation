@@ -1,12 +1,7 @@
 package com.practice.redmine.automation.steps;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.practice.redmine.automation.pages.LoginPage;
 import com.practice.redmine.automation.pages.MainPage;
-import cucumber.api.PendingException;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -31,14 +26,14 @@ public class LoginSteps {
     @Given("^a user which exists$")
     public void userExists() throws Exception {
 
-        username = "TestUser1";
-        password = "TestUser1Password";
+        username = "UserWhichExists";
+        password = "Password";
     }
 
     @Given("^incorrect user credentials$")
     public void incorrectUserCredentials() throws Throwable {
 
-        username = "TestUser1";
+        username = "UserWhichExists";
         password = "wrong password";
     }
 
@@ -49,7 +44,7 @@ public class LoginSteps {
 
     @Then("^user logged in successfully$")
     public void userLoggedInSuccessfully() throws Exception {
-        mainPage.loggedAs().shouldHave(text("Logged in as " + "TestUser1"));
+        mainPage.loggedAs().shouldHave(text("Logged in as " + "UserWhichExists"));
     }
 
 

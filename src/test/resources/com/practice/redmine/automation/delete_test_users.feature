@@ -1,6 +1,6 @@
 Feature: Delete test users
 
-  In order to be able to run registration tests
+  In order to be able to run registration tests<br/>
   Attempt to delete those test users which have already been created
 
   Background:

@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src\\test\\resources\\com\\practice\\redmine\\automation\\login.feature"},
+        features = {"src\\test\\resources\\com\\practice\\redmine\\automation\\projects.feature"},
         plugin = {"pretty",
                 "io.qameta.allure.cucumber3jvm.AllureCucumber3Jvm",
                 "json:target/cucumber-report/report.json"}
 )
-public class LoginTest {
+public class ProjectsTest {
 }

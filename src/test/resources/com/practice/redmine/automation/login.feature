@@ -1,7 +1,7 @@
 Feature: Login
 
-  In order to be able to use Redmine
-  As a user
+  In order to be able to use Redmine<br/>
+  As a user<br/>
   I should be able to log in
 
   Background:

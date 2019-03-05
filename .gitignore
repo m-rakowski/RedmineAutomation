@@ -84,3 +84,6 @@ build/
 
 # Allure Reports plugin
 .allure/
+
+# Allure Report results as seen by Jenkins
+allure-report/

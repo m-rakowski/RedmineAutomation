@@ -11,10 +11,13 @@ public class NewProjectPage extends Page<NewProjectPage> {
         url = "http://demo.redmine.org/projects/new";
     }
 
-    public ProjectSettingsPage createProject(String projectName, String projectDescription, String projectId) {
+    public ProjectSettingsPage createProject(String projectName, String projectDescription, String projectId, boolean isPublic) {
         $("#project_name").setValue(projectName);
         $("#project_description").setValue(projectDescription);
         $("#project_identifier").setValue(projectId);
+
+        $("#project_is_public").setSelected(isPublic);
+
         $(byName("commit")).click();
 
         //<input size="60" type="text" value="" name="project[name]" id="project_name">
