@@ -34,8 +34,6 @@ public class DeleteTestUsersSteps {
 
         mainPage = loginPage.tryLoggingInAs(username, password);
 
-        //if user had been created before, open their account page; else just move on to the next user
-        assumeFalse(loginPage.errorMessage().exists() && "Invalid user or password".equals(loginPage.errorMessage().text()));
     }
 
     @When("^deleting account$")

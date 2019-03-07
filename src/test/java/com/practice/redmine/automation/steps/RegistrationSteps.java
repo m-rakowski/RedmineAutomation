@@ -1,5 +1,6 @@
 package com.practice.redmine.automation.steps;
 
+import com.codeborne.selenide.Selenide;
 import com.practice.redmine.automation.entities.User;
 import com.practice.redmine.automation.pages.AccountPage;
 import com.practice.redmine.automation.pages.RegistrationPage;
@@ -8,7 +9,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-import static com.codeborne.selenide.CollectionCondition.size;
+import java.util.Random;
+
 import static com.codeborne.selenide.Condition.text;
 import static org.junit.Assert.assertEquals;
 
@@ -18,6 +20,16 @@ public class RegistrationSteps {
     AccountPage accountPage;
     User user;
 
+    @Given("a new user \"([^\"]*)\" with password \"([^\"]*)\"")
+    public void aNewUserWithPassword(String username, String password) {
+        user = new User(
+                username,
+                password,
+                "FirstName",
+                "LastName",
+                "email" + new Random().nextInt(10) + "@email.com",
+                "English");
+    }
 
     @Given("^signup page open$")
     public void signupPageOpen() {
@@ -34,7 +46,13 @@ public class RegistrationSteps {
     @Given("^a user which already exists$")
     public void userWhichAlreadyExists() throws Throwable {
 
-        user = UserDataGenerator.getLastUserGenerated();
+        user = new User(
+                "UserWhichExists",
+                "Password",
+                "UserWhichExists",
+                "User",
+                "user@email.com",
+                "English");
     }
 
     @When("^user is being registered$")
@@ -47,9 +65,7 @@ public class RegistrationSteps {
     public void userWillNotBeRegistered() {
 
         assertEquals(registrationPage.getUrl(), com.codeborne.selenide.WebDriverRunner.url());
-        registrationPage.registrationErrors().shouldHave(size(2));
-        registrationPage.registrationErrors().get(0).shouldHave(text("Email has already been taken"));
-        registrationPage.registrationErrors().get(1).shouldHave(text("Login has already been taken"));
+        registrationPage.registrationErrors().get(0).shouldHave(text("Login has already been taken"));
     }
 
     @Then("^user registered successfully$")
@@ -60,4 +76,8 @@ public class RegistrationSteps {
         accountPage.message().shouldHave(text("Your account has been activated. You can now log in."));
     }
 
+    @Then("logout")
+    public void logout() {
+        Selenide.close();
+    }
 }

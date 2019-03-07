@@ -12,7 +12,7 @@ Feature: Projects
     When closes the project
     Then the project becomes read-only
 
-  Scenario: Closing a project
+  Scenario: Reopening a project
     Given user logged in
     And a project which exists
     When reopens the project

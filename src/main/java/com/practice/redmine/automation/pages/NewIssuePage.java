@@ -16,11 +16,6 @@ public class NewIssuePage extends Page<NewIssuePage> {
         return this;
     }
 
-//    public NewIssuePage(String project) {
-//        super(NewIssuePage.class);
-//        url = "http://demo.redmine.org/projects/" + project + "/issues/new";
-//    }
-
     public void createIssue(String issueSubject, String issueDescription) {
         $("#issue_subject").setValue(issueSubject);
         $("#issue_description").setValue(issueDescription);

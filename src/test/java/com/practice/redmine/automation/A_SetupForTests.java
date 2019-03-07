@@ -6,11 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src\\test\\resources\\com\\practice\\redmine\\automation\\delete_test_users.feature",
-                "src\\test\\resources\\com\\practice\\redmine\\automation\\registration.feature"},
+        features = {"src\\test\\resources\\com\\practice\\redmine\\automation\\a_test_setup.feature"},
         plugin = {"pretty",
                 "io.qameta.allure.cucumber3jvm.AllureCucumber3Jvm",
                 "json:target/cucumber-report/report.json"}
 )
-public class DeleteUsersThenRegisterTest {
+public class A_SetupForTests {
 }

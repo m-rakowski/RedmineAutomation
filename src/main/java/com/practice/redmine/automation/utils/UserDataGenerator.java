@@ -19,8 +19,6 @@ public class UserDataGenerator {
 
     public static User getNewUser() throws IOException {
 
-        UserDataGenerator.incrementCounter();
-
         String username = "TestUser" + RandomStringGenerator.randomAlphaNumeric(10);
 
         return new User(

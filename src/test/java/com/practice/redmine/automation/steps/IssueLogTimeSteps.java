@@ -15,8 +15,9 @@ public class IssueLogTimeSteps {
     String issue = "issue" + time;
     String issueId;
 
-    @Given("I am logged in as \"(.*)\" \"(.*)\"")
-    public void loggedIn(String username, String password) {
+
+    @Given("I am logged in as \"(.*)\" with password \"(.*)\"")
+    public void iAmLoggedInAsWithPassword(String username, String password) {
         new LoginPage().goTo().tryLoggingInAs(username, password);
     }
 
@@ -60,4 +61,5 @@ public class IssueLogTimeSteps {
                 .goTo()
                 .timeSpent().shouldHave(text("1.00 hour"));
     }
+
 }

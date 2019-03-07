@@ -32,25 +32,18 @@ public class TestConfiguration {
         Configuration.browser = "chrome";
         Configuration.fastSetValue = true;
 
-//        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-//        ChromeOptions options = new ChromeOptions();
-//        options.setExperimentalOption("debuggerAddress", "127.0.0.1:9222");
-//        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-//        Configuration.browserCapabilities = capabilities;
-
         log.info("Configuration.reportsFolder = " + Configuration.reportsFolder);
         log.info("Configuration.timeout = " + Configuration.timeout);
         log.info("Configuration.browser = " + Configuration.browser);
         log.info("Configuration.fastSetValue = " + Configuration.fastSetValue);
-//        log.info("Configuration.browserCapabilities = " + Configuration.browserCapabilities);
 
     }
 
-    @AfterStep
-    @Step
-    public void screenshotAfterEachStep() {
-        Utils.screenshot();
-    }
+//    @AfterStep
+//    @Step
+//    public void screenshotAfterEachStep() {
+//        Utils.screenshot();
+//    }
 
     @After
     @Step
