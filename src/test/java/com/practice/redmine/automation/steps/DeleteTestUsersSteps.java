@@ -19,13 +19,12 @@ import static org.junit.Assume.assumeFalse;
 public class DeleteTestUsersSteps {
 
 
-    LoginPage loginPage;
+    LoginPage loginPage = new LoginPage();
     MainPage mainPage;
 
     @Given("^a login page open$")
     public void loginPageOpen() {
 
-        loginPage = new LoginPage();
         loginPage.goTo();
     }
 
@@ -38,7 +37,7 @@ public class DeleteTestUsersSteps {
 
     @When("^deleting account$")
     public void deletingAccount() {
-        open("http://demo.redmine.org/my/account/destroy");
+        open("http://localhost:10083/my/account/destroy");
         $("#confirm").setSelected(true);
         $(byName("commit")).click();
     }

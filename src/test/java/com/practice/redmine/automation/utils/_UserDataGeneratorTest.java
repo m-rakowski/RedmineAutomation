@@ -13,15 +13,13 @@ import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-
+@Ignore
 public class _UserDataGeneratorTest {
 
-    @Ignore
     @Test
     public void deleteAllTestUsers() {
         UserDataGenerator.deleteUsersFromSystem();
     }
-
 
     @Test
     public void shouldResetCounter() throws IOException {

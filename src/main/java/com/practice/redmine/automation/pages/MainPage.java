@@ -9,7 +9,7 @@ public class MainPage extends Page<MainPage> {
 
     public MainPage() {
         super(MainPage.class);
-        url = "http://demo.redmine.org";
+        url = "http://localhost:10083";
     }
 
 

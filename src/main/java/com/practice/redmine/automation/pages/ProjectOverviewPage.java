@@ -1,5 +1,7 @@
 package com.practice.redmine.automation.pages;
 
+import com.codeborne.selenide.Selenide;
+
 import static com.codeborne.selenide.Selenide.$;
 
 public class ProjectOverviewPage extends Page<ProjectOverviewPage> {
@@ -9,7 +11,7 @@ public class ProjectOverviewPage extends Page<ProjectOverviewPage> {
     }
 
     public ProjectOverviewPage setProjectId(String projectId) {
-        url = "http://demo.redmine.org/projects/" + projectId;
+        url = "http://localhost:10083/projects/" + projectId;
         return this;
     }
 

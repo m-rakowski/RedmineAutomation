@@ -1,6 +1,7 @@
 package com.practice.redmine.automation.utils;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
 import lombok.extern.log4j.Log4j;
 
@@ -33,5 +34,19 @@ public class Utils {
         } catch (IOException e) {
             log.error("Could not take screenshot\n" + e.getMessage());
         }
+    }
+
+    public static void waitAndRefreshUntilPresent(int iterationsTimeOut, SelenideElement selenideElement) {
+
+        int i = 0;
+        for (; i < iterationsTimeOut; i++) {
+            if (selenideElement.exists()) {
+                break;
+            } else {
+                Selenide.sleep(200);
+                Selenide.refresh();
+            }
+        }
+        log.debug("i was " +i);
     }
 }

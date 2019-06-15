@@ -12,7 +12,7 @@ public class NewIssuePage extends Page<NewIssuePage> {
 
     public NewIssuePage setProjectId(String projectId) {
         this.projectId = projectId;
-        url = "http://demo.redmine.org/projects/" + this.projectId + "/issues/new";
+        url = "http://localhost:10083/projects/" + this.projectId + "/issues/new";
         return this;
     }
 

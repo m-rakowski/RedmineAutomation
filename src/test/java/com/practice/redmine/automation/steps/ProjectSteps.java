@@ -4,6 +4,7 @@ package com.practice.redmine.automation.steps;
 import com.codeborne.selenide.Selenide;
 import com.practice.redmine.automation.pages.*;
 import com.practice.redmine.automation.utils.RandomStringGenerator;
+import com.practice.redmine.automation.utils.Utils;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -48,7 +49,7 @@ public class ProjectSteps {
     @When("^user tries to create the project$")
     public void userTriesToCreateTheProject() {
 
-        projectSettingsPage = newProjectPage.createProject(projectName, projectDescription, projectId, true);
+        projectSettingsPage = new NewProjectPage().createProject(projectName, projectDescription, projectId, true);
     }
 
 
@@ -56,7 +57,6 @@ public class ProjectSteps {
     public void projectGetsCreatedSuccessfully() {
 
         projectSettingsPage.message().shouldHave(text("Successful creation."));
-        projectSettingsPage.projectDropDown().getSelectedOption().shouldHave(text(projectName));
     }
 
     @And("a project which exists")
@@ -64,19 +64,24 @@ public class ProjectSteps {
         projectId = "projectname4dfa3mx6t2";
     }
 
-    @When("closes the project")
+    @When("closing the project")
     public void closesTheProject() {
         new ProjectOverviewPage()
                 .setProjectId(projectId)
-                .goTo()
-                .clickClose();
+                .goTo();
+//        Utils.screenshot();
+        new ProjectOverviewPage().clickClose();
         Selenide.confirm();
 
     }
 
     @Then("the project becomes read-only")
     public void theProjectBecomesReadOnly() {
+
         new NewIssuePage().setProjectId(projectId).goTo();
+
+        Utils.waitAndRefreshUntilPresent(10, $("#errorExplanation"));
+
         $("#errorExplanation").shouldHave(text("You are not authorized to access this page."));
         //<p id="errorExplanation">You are not authorized to access this page.</p>
     }
@@ -85,14 +90,34 @@ public class ProjectSteps {
     public void reopensTheProject() {
         new ProjectOverviewPage()
                 .setProjectId(projectId)
-                .goTo()
-                .clickReopen();
+                .goTo();
+//        Utils.screenshot();
+        new ProjectOverviewPage().clickReopen();
         Selenide.confirm();
     }
 
     @Then("new issues can be added to the project")
     public void newIssuesCanBeAddedToTheProject() {
+
         new NewIssuePage().setProjectId(projectId).goTo();
+
+        Utils.waitAndRefreshUntilPresent(10, $("#issue_subject"));
+
         $("#errorExplanation").shouldNotBe(visible);
+    }
+
+    @And("a project with id (.*) which exists")
+    public void aProjectWithIdId_WhichExists(String projectId) {
+        this.projectId = projectId;
+    }
+
+    @When("creating a private project with name \"(.*)\" if it does not exists yet")
+    public void creatingAPrivateProjectWithNameIfItDoesNotExistsYet(String projectName) {
+
+        projectId = "id_" + projectName;
+
+        new NewProjectPage()
+                .goTo()
+                .createProject(projectName, projectDescription, projectId, false);
     }
 }

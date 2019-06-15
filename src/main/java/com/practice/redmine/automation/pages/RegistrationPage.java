@@ -11,7 +11,7 @@ public class RegistrationPage extends Page<RegistrationPage> {
 
     public RegistrationPage() {
         super(RegistrationPage.class);
-        url = "http://demo.redmine.org/account/register";
+        url = "http://localhost:10083/account/register";
     }
 
     public void tryRegisteringUser(String userLogin, String userPassword, String firstName, String lastName, String email, String language) {

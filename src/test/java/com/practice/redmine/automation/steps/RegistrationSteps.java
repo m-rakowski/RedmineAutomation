@@ -1,13 +1,18 @@
 package com.practice.redmine.automation.steps;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import com.practice.redmine.automation.entities.User;
 import com.practice.redmine.automation.pages.AccountPage;
 import com.practice.redmine.automation.pages.RegistrationPage;
+import com.practice.redmine.automation.utils.TestUtils;
 import com.practice.redmine.automation.utils.UserDataGenerator;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Random;
 
@@ -63,21 +68,21 @@ public class RegistrationSteps {
 
     @Then("^user will not be registered$")
     public void userWillNotBeRegistered() {
+        new WebDriverWait(WebDriverRunner.getWebDriver(), Configuration.timeout / 1000).until(ExpectedConditions.urlToBe(registrationPage.getUrl()));
 
-        assertEquals(registrationPage.getUrl(), com.codeborne.selenide.WebDriverRunner.url());
         registrationPage.registrationErrors().get(0).shouldHave(text("Login has already been taken"));
     }
 
     @Then("^user registered successfully$")
     public void userRegisteredSuccessfully() {
+        new WebDriverWait(WebDriverRunner.getWebDriver(), Configuration.timeout / 1000).until(ExpectedConditions.urlToBe(accountPage.getUrl()));
 
-        assertEquals(accountPage.getUrl(), com.codeborne.selenide.WebDriverRunner.url());
         accountPage.loggedAs().shouldHave(text("Logged in as " + user.username));
         accountPage.message().shouldHave(text("Your account has been activated. You can now log in."));
     }
 
     @Then("logout")
     public void logout() {
-        Selenide.close();
+        TestUtils.logout();
     }
 }

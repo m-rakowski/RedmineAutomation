@@ -6,7 +6,7 @@ public class IssuesView extends Page<IssuesView> {
     }
 
     public IssuesView setProjectId(String projectId) {
-        url = "http://demo.redmine.org/projects/" + projectId + "/issues";
+        url = "http://localhost:10083/projects/" + projectId + "/issues";
         return this;
     }
 }

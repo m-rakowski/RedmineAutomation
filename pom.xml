@@ -80,6 +80,9 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+                    <systemPropertyVariables>
+                        <chosen.execution.browser>chrome</chosen.execution.browser>
+                    </systemPropertyVariables>
                 </configuration>
                 <dependencies>
                     <dependency>

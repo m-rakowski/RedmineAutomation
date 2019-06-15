@@ -11,10 +11,12 @@ public class LoginPage extends Page<LoginPage> {
 
     public LoginPage() {
         super(LoginPage.class);
-        url = "http://demo.redmine.org/login";
+        url = "http://localhost:10083/login";
     }
 
     public MainPage tryLoggingInAs(String username, String password) {
+        this.goTo();
+
         $("#username").setValue(username);
         $("#password").setValue(password);
         $(byName("login")).click();

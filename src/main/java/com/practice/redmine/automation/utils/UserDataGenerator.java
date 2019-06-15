@@ -90,7 +90,7 @@ public class UserDataGenerator {
             }
 
 
-            open("http://demo.redmine.org/my/account/destroy");
+            open("http://localhost:10083/my/account/destroy");
             $("#confirm").setSelected(true);
             //<input type="submit" name="commit" value="Delete my account">
             $(byName("commit")).click();

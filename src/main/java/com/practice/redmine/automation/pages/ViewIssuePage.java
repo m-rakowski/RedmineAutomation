@@ -11,7 +11,7 @@ public class ViewIssuePage extends Page<ViewIssuePage> {
     }
 
     public ViewIssuePage setIssueId(String issueId) {
-        url = "http://demo.redmine.org/issues/" + issueId;
+        url = "http://localhost:10083/issues/" + issueId;
         return this;
     }
 
@@ -21,6 +21,6 @@ public class ViewIssuePage extends Page<ViewIssuePage> {
     }
 
     public SelenideElement timeSpent() {
-        return $("td.spent-time");
+        return $("div.spent-time.attribute div.value");
     }
 }

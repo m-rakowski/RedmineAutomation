@@ -13,7 +13,7 @@ public class AccountDeletionPage extends Page<AccountDeletionPage> {
 
     public AccountDeletionPage() {
         super(AccountDeletionPage.class);
-        url = "http://demo.redmine.org/my/account/destroy";
+        url = "http://localhost:10083/my/account/destroy";
     }
 
 

@@ -11,7 +11,7 @@ public class AccountPage extends Page<AccountPage> {
 
     public AccountPage() {
         super(AccountPage.class);
-        url = "http://demo.redmine.org/my/account";
+        url = "http://localhost:10083/my/account";
     }
 
 

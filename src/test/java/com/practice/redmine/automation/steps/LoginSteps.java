@@ -30,6 +30,13 @@ public class LoginSteps {
         password = "Password";
     }
 
+    @Given("^a user which does not exist$")
+    public void userWhichDoesNotExist() throws Exception {
+
+        username = "9hf983jh93hrhsdhoha";
+        password = "h89yhsjkf32hihjkhdf";
+    }
+
     @Given("^incorrect user credentials$")
     public void incorrectUserCredentials() throws Throwable {
 

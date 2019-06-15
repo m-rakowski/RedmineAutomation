@@ -8,10 +8,12 @@ public class NewProjectPage extends Page<NewProjectPage> {
 
     public NewProjectPage() {
         super(NewProjectPage.class);
-        url = "http://demo.redmine.org/projects/new";
+        url = "http://localhost:10083/projects/new";
     }
 
     public ProjectSettingsPage createProject(String projectName, String projectDescription, String projectId, boolean isPublic) {
+        this.goTo();
+
         $("#project_name").setValue(projectName);
         $("#project_description").setValue(projectDescription);
         $("#project_identifier").setValue(projectId);
