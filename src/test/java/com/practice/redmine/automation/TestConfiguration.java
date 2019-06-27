@@ -3,6 +3,7 @@ package com.practice.redmine.automation;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import com.practice.redmine.automation.utils.SleepyWebDriverEventListenerForIE;
 import com.practice.redmine.automation.utils.Utils;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -45,10 +46,13 @@ public class TestConfiguration {
         }
 
 
-        if (Configuration.browser.toLowerCase().equals("ie")) {
+        if ("ie".equals(Configuration.browser.toLowerCase())) {
+
             DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
             capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
             Configuration.browserCapabilities = capabilities;
+
+            WebDriverRunner.addListener(new SleepyWebDriverEventListenerForIE());
         }
 
         includeEnvInfoInReport();
@@ -69,13 +73,13 @@ public class TestConfiguration {
         }
     }
 
-//    @AfterStep
-//    @Step
-//    public void screenshotAfterEachStep() {
-//        if (WebDriverRunner.hasWebDriverStarted()) {
-//            Utils.screenshot();
-//        }
-//    }
+    @AfterStep
+    @Step
+    public void screenshotAfterEachStep() {
+        if (WebDriverRunner.hasWebDriverStarted() && "ie".equals(Configuration.browser.toLowerCase())) {
+            Utils.screenshot();
+        }
+    }
 
     @After
     @Step
